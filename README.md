@@ -4,7 +4,7 @@ Codes that have been developed in CDAC 2021 -  CUDA Fortran
 ----------------------------------------------------------------------------------
 
 -----------------------------------------------
-1)DCT for serial CPU
+1)DCT for serial CPU (based on Makhoul 1980)
 To run and plot, execute: bash bash_script.sh
 
 Files:
