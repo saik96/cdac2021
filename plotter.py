@@ -16,12 +16,12 @@ if flag==1:
     ax3a=f1.add_subplot(3,2,6)
 
     params=np.loadtxt('para.in')
-    i1=np.loadtxt('input.dat')
-    o1=np.loadtxt('output.dat')
-    o2=np.loadtxt('output2.dat')
-    ri1=np.loadtxt('ref_input.dat')
-    ro1=np.loadtxt('ref_output.dat')
-    ro2=np.loadtxt('ref_output2.dat')
+    i1=np.loadtxt('cpu_input.dat')
+    o1=np.loadtxt('cpu_output.dat')
+    o2=np.loadtxt('cpu_output2.dat')
+    ri1=np.loadtxt('cpu_ref_input.dat')
+    ro1=np.loadtxt('cpu_ref_output.dat')
+    ro2=np.loadtxt('cpu_ref_output2.dat')
 
     ax1.plot(ri1[:,0],ri1[:,1],'r.-')
     ax1.plot(i1[:,0],i1[:,1],'b.')
@@ -42,20 +42,20 @@ if flag==1:
     ax3.legend()
     print(params[0],max(abs(ro2[:,1]-ri1[:,1])),max(abs(o2[:,1]-i1[:,1])))
     plt.tight_layout()
-    plt.savefig('plot.png')
+    plt.savefig('cpu_plot.png')
     #plt.show()
 
 if flag==2:
 
     #rescomp plot
-    errs=np.loadtxt('res_error.out')
+    errs=np.loadtxt('cpu_res_error.out')
     f1= plt.figure(1,figsize=(5,3),dpi=dpi_p)
     ax1=f1.add_subplot(1,1,1)
     ax1.plot(errs[:,0],errs[:,1],'r.-',label='FFTW3 DCT')
     ax1.plot(errs[:,0],errs[:,2],'b.-',label='NARA DCT')
     ax1.set_ylabel('max$(|\mathcal{C}^{-1} \mathcal{C} (f) - f|)$')
     ax1.set_xlabel('N')
-    ax1.set_title('Resolution scaling of DCT errors')
-    plt.savefig('errs_plot_dct.png')
+    ax1.set_title('Resolution scaling of DCT errors of CPU codes')
+    plt.savefig('cpu_errs_plot_dct.png')
 
 

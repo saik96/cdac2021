@@ -32,7 +32,7 @@ program dct_test
       CALL dfftw_plan_r2r_1d(pfor,n,f,g,FFTW_REDFT10,FFTW_ESTIMATE)
       CALL dfftw_plan_r2r_1d(pinv,n,g,f,FFTW_REDFT01,FFTW_ESTIMATE)
 
-     open(unit=100,file='ref_input.dat',status='unknown')
+     open(unit=100,file='cpu_ref_input.dat',status='unknown')
       do i=0,n-1
       !  f(i+1)=cos(p*scl*(i+0.5))
         f(i+1)=exp(-30*(1-(i*1/dble(n))**2)**4) !LH test fn
@@ -43,7 +43,7 @@ program dct_test
       call dfftw_execute_r2r(pfor,f,g)
       g=g/dble(n)
      
-     open(unit=200,file='ref_output.dat',status='unknown')
+     open(unit=200,file='cpu_ref_output.dat',status='unknown')
       do i=1,n
         write(200,*)i-1,g(i)
       enddo
@@ -51,7 +51,7 @@ program dct_test
 
      call dfftw_execute_r2r(pinv,g,f)
       f=f/2.0d0
-     open(unit=300,file='ref_output2.dat',status='unknown')
+     open(unit=300,file='cpu_ref_output2.dat',status='unknown')
       do i=1,n
         write(300,*)i-1,f(i)
       enddo

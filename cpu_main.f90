@@ -27,7 +27,7 @@ program serial_dct_dft
         x(k+1)=exp(-30*(1-(k*1/dble(n))**2)**4) !LH test fn
       enddo
 
-     open(unit=100,file='input.dat',status='unknown')
+     open(unit=100,file='cpu_input.dat',status='unknown')
       do k=0,n-1
         write(100,*)k,x(k+1)
       enddo
@@ -36,7 +36,7 @@ program serial_dct_dft
      !fwd dct
       call redft10(x,F)
 
-     open(unit=200,file='output.dat',status='unknown')
+     open(unit=200,file='cpu_output.dat',status='unknown')
       do r=0,n-1
         write(200,*)r,F(r+1)
       enddo
@@ -45,7 +45,7 @@ program serial_dct_dft
      !inv dct
      call redft01(F,x)
 
-     open(unit=300,file='output2.dat',status='unknown')
+     open(unit=300,file='cpu_output2.dat',status='unknown')
       do k=0,n-1
         write(300,*)k,x(k+1)
       enddo
